@@ -3,7 +3,6 @@ import torchvision.transforms as transforms
 import torchvision
 import numpy as np
 import cv2
-import json
 
 
 avgpool_features = None
@@ -45,6 +44,7 @@ def get_heat_map(img_st):
         sum += weight * img
 
     img = sum.detach().numpy()
+    print(img.shape)
     img = img / np.max(img) * 255
     img = img.astype(np.uint8)
     img = cv2.resize(img, (224, 224))
